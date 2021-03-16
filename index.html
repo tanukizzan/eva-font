@@ -10,15 +10,15 @@
 </head>
 
 <body>
-  <h1>エヴァンゲリオン風ロゴジェネレーター</h1>
+  <h1>エヴァンゲリオン風フォントジェネレーター</h1>
   <div class="settings-area">
     <form onsubmit="return false;">
-      <input type="text" name="input" id="text-input" placeholder="表示したい文字を入力してください">
+      <input type="text" name="input" id="text-input" placeholder="テキストを入力…">
     </form>
     <form id="background">背景選択
-      <input type="radio" name="back-color" value="black" checked>黒
-      <input type="radio" name="back-color" value="white">白
-      <input type="radio" name="back-color" value="image">画像を選択
+      <label for="black"><input type="radio" name="back-color" value="black" id="black" checked>黒</label>
+      <label for="white"><input type="radio" name="back-color" value="white" id="white">白</label>
+      <label for="image"><input type="radio" name="back-color" value="image" id="image">画像を選択</label>
     </form>
     <form id="img-select">
       <input type="file" name="画像選択" id="file-select" accept="image/*">
@@ -31,25 +31,29 @@
     </form>
     <p>垂直比率：<span id="current-value"></span></p>
     <form id="height-position">縦位置指定
-      <input type="radio" name="hp" value="top">上
-      <input type="radio" name="hp" value="middle" checked>中央
-      <input type="radio" name="hp" value="bottom">下
+      <label for="top"><input type="radio" name="hp" value="top" id="top">上</label>
+      <label for="middle"><input type="radio" name="hp" value="middle" id="middle" checked>中央</label>
+      <label for="bottom"><input type="radio" name="hp" value="bottom" id="bottom">下</label>
     </form>
     <form id="width-position">横位置指定
-      <input type="radio" name="wp" value="left">左
-      <input type="radio" name="wp" value="center" checked>中央
-      <input type="radio" name="wp" value="right">右
+      <label for="left"><input type="radio" name="wp" value="left" id="left">左</label>
+      <label for="center"><input type="radio" name="wp" value="center" id="center" checked>中央</label>
+      <label for="right"><input type="radio" name="wp" value="right" id="right">右</label>
     </form>
-    <button id="submit">決定</button>
+    <nav>
+      <button id="submit">決定</button>
+      <button id="full-screen">フルスクリーン</button>
+    </nav>
   </div>
   <main id="main-area">
     <div class="font-area">
       <div id="text-area" class="middle center">
-        <p id="center-area"></p>
+        <p id="result-area"></p>
       </div>
     </div>
   </main>
   <footer>
+    <p>※Android等明朝体フォントが入っていない端末では使用できません</p>
     <a href="https://app.tanukizzan.com">&copy; 2021 Tanukizzan</a>
   </footer>
   <script src="./script.js"></script>

@@ -9,7 +9,8 @@ const widthPos = document.getElementById('width-position');
 const submit = document.getElementById('submit');
 const mainArea = document.getElementById('main-area');
 const textPos = document.getElementById('text-area');
-const centerArea = document.getElementById('center-area');
+const resultArea = document.getElementById('result-area');
+const fullScreen = document.getElementById('full-screen');
 
 // 結果を毎回削除する関数
 function removeAllChildren(element) {
@@ -20,8 +21,8 @@ function removeAllChildren(element) {
 
 // 送信ボタン
 submit.onclick = () => {
-  removeAllChildren(centerArea);
-  centerArea.innerHTML = textInput.value;
+  removeAllChildren(resultArea);
+  resultArea.innerHTML = textInput.value;
 }
 
 // enterキーで送信
@@ -36,13 +37,15 @@ bgc.addEventListener('change', () => {
   let checked = bgc.elements['back-color'].value;
   switch (checked) {
     case 'black':
-      mainArea.style.background = '#000'
-      centerArea.style.color = '#fff'
+      mainArea.style.background = '#000000'
+      resultArea.style.color = '#ffffff'
+      colorPicker.defaultValue = '#ffffff';
       fileSelect.style.display = 'none';
       break;
     case 'white':
-      mainArea.style.background = '#fff'
-      centerArea.style.color = '#000'
+      mainArea.style.background = '#ffffff'
+      resultArea.style.color = '#000000';
+      colorPicker.defaultValue = '#000000';
       fileSelect.style.display = 'none';
       break;
     case 'image':
@@ -50,6 +53,7 @@ bgc.addEventListener('change', () => {
       break;
   }
 })
+// 画像選択
 fileSelect.addEventListener('change', (e) => {
   let img = e.target.files;
   let reader = new FileReader();
@@ -109,12 +113,12 @@ widthPos.addEventListener('change', () => {
 window.addEventListener('DOMContentLoaded', () => {
   // カラーピッカー
   colorPicker.addEventListener('change', () => {
-    centerArea.style.color = colorPicker.value;
+    resultArea.style.color = colorPicker.value;
   })
   // 垂直比率
-  centerArea.style.transform = 'scaleY(' + vRange.value + ')';
+  resultArea.style.transform = 'scaleY(' + vRange.value + ')';
   vRange.addEventListener('change', () => {
-    centerArea.style.transform = 'scaleY(' + vRange.value + ')';
+    resultArea.style.transform = 'scaleY(' + vRange.value + ')';
   })
 })
 
@@ -132,3 +136,6 @@ window.onload = () => {
   fileSelect.style.display = 'none';
 }
 
+fullScreen.addEventListener('click', () => {
+  mainArea.requestFullscreen();
+})
