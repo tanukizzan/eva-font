@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap');
+
+body {
+  color: #fff;
+  background-color: #000;
+  font-size: 20px;
+  font-family: "Times New Roman", "游明朝", YuMincho, serif;
+  width: 80%;
+  margin: auto;
+  font-feature-settings: "palt";
+}
+
+*, *:before, *:after {box-sizing: border-box;}
+
+h1 {
+  font-size: 3rem;
+  margin: 1rem auto;
+  text-align: center;
+  transform: scaleY(1.3);
+  letter-spacing: -1px;
+}
+
+.settings-area {
+  margin: 1rem auto;
+  text-align: center;
+}
+.settings-area #text-input {
+  width: 50%;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  font-family: "Times New Roman", "游明朝", YuMincho, serif;
+  font-weight: 900;
+  background: #fff;
+  border: none;
+  margin-bottom: 1rem;
+}
+.settings-area p {margin: 0;}
+.settings-area #submit {
+  background: none;
+  border: solid 1px #fff;
+  color: #fff;
+  font-family: "Times New Roman", "游明朝", YuMincho, serif;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: .3s;
+}
+.settings-area #submit:hover {
+  background: #fff;
+  color: #000;
+}
+
+main {
+  position: relative;
+  width: 100%;
+  border: 1px solid #888;
+  margin: 0 auto;
+  background: #000;
+}
+main:before {
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
+.font-area {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+#text-area {
+  position: absolute;
+  width: 100%;
+}
+.top {
+  top: 2rem;
+}
+.middle {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.bottom {
+  bottom: 2rem;
+}
+.left {
+  text-align: left;
+  padding-left: 2rem;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.font-area p {
+  font-weight: 900;
+  font-size: 3rem;
+  letter-spacing: -1px;
+  background-color: transparent;
+  color: #fff;
+  margin: 0;
+  width: 100%;
+  line-height: 1;
+}
+
+footer {
+  text-align: center;
+  margin: 1rem auto;
+}
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
