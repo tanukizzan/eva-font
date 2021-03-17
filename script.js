@@ -136,6 +136,13 @@ window.onload = () => {
   fileSelect.style.display = 'none';
 }
 
+// フルスクリーン
 fullScreen.addEventListener('click', () => {
-  mainArea.requestFullscreen();
+  if (mainArea.requestFullscreen) {
+    mainArea.requestFullscreen();
+  } else if (mainArea.webkitRequestFullscreen) {
+    mainArea.webkitRequestFullscreen();
+  } else if (mainArea.mozRequestFullscreen) {
+    mainArea.mozRequestFullscreen();
+  }
 })
