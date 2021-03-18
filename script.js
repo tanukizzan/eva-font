@@ -3,7 +3,8 @@ const bgc = document.getElementById('background');
 const fileSelect = document.getElementById('file-select');
 const colorPicker = document.getElementById('color-picker');
 const vRange = document.getElementById('vertical-range');
-const currentValue = document.getElementById('current-value');
+const sizeRange = document.getElementById('size-range');
+const currentValue = document.getElementById('current-value-1');
 const heightPos = document.getElementById('height-position');
 const widthPos = document.getElementById('width-position');
 const submit = document.getElementById('submit');
@@ -26,7 +27,7 @@ submit.onclick = () => {
 }
 
 // enterキーで送信
-textInput.addEventListener('keypress', function (event) {
+textInput.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     submit.onclick();
   }
@@ -37,22 +38,27 @@ bgc.addEventListener('change', () => {
   let checked = bgc.elements['back-color'].value;
   switch (checked) {
     case 'black':
-      mainArea.style.background = '#000000'
-      resultArea.style.color = '#ffffff'
-      colorPicker.defaultValue = '#ffffff';
+      mainArea.style.background = '#000000';
       fileSelect.style.display = 'none';
+      if (resultArea.style.color === 'rgb(0, 0, 0)') {
+        resultArea.style.color = '#ffffff';
+        colorPicker.defaultValue = '#ffffff';
+      }
       break;
     case 'white':
-      mainArea.style.background = '#ffffff'
-      resultArea.style.color = '#000000';
-      colorPicker.defaultValue = '#000000';
+      mainArea.style.background = '#ffffff';
       fileSelect.style.display = 'none';
+      if (resultArea.style.color === 'rgb(255, 255, 255)') {
+        resultArea.style.color = '#000000';
+        colorPicker.defaultValue = '#000000';
+      }
       break;
     case 'image':
       fileSelect.style.display = 'inline';
       break;
   }
 })
+
 // 画像選択
 fileSelect.addEventListener('change', (e) => {
   let img = e.target.files;
@@ -110,30 +116,30 @@ widthPos.addEventListener('change', () => {
   }
 })
 
-window.addEventListener('DOMContentLoaded', () => {
+// 比率表示
+const setValue = (val) => {currentValue.innerText = val;}
+const rangeChange = (e) => {setValue(e.target.value);}
+window.onload = () => {
+  // 黒背景時の文字色設定
+  resultArea.style.color = '#ffffff';
+  // ファイル選択ボックスを非表示
+  fileSelect.style.display = 'none';
   // カラーピッカー
   colorPicker.addEventListener('change', () => {
     resultArea.style.color = colorPicker.value;
   })
   // 垂直比率
-  resultArea.style.transform = 'scaleY(' + vRange.value + ')';
+  vRange.addEventListener('input', rangeChange);
   vRange.addEventListener('change', () => {
     resultArea.style.transform = 'scaleY(' + vRange.value + ')';
   })
-})
-
-// 比率表示
-const setValue = (val) => {
-  currentValue.innerText = val;
-}
-const rangeChange = (e) => {
-  setValue(e.target.value);
-}
-window.onload = () => {
-  vRange.addEventListener('input', rangeChange);
   setValue(vRange.value);
-  // ファイル選択ボックスを非表示
-  fileSelect.style.display = 'none';
+  resultArea.style.transform = 'scaleY(' + vRange.value + ')';
+  // サイズ調整
+  sizeRange.addEventListener('change', () => {
+    resultArea.style.fontSize = sizeRange.value + 'px';
+  })
+  resultArea.style.fontSize = sizeRange.value + 'px';
 }
 
 // フルスクリーン
