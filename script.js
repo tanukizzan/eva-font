@@ -13,16 +13,8 @@ const textPos = document.getElementById('text-area');
 const resultArea = document.getElementById('result-area');
 const fullScreen = document.getElementById('full-screen');
 
-// 結果を毎回削除する関数
-function removeAllChildren(element) {
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
-  }
-}
-
 // 送信ボタン
 submit.onclick = () => {
-  removeAllChildren(resultArea);
   resultArea.innerHTML = textInput.value;
 }
 
@@ -119,6 +111,7 @@ widthPos.addEventListener('change', () => {
 // 比率表示
 const setValue = (val) => {currentValue.innerText = val;}
 const rangeChange = (e) => {setValue(e.target.value);}
+
 window.onload = () => {
   // 黒背景時の文字色設定
   resultArea.style.color = '#ffffff';
@@ -136,10 +129,10 @@ window.onload = () => {
   setValue(vRange.value);
   resultArea.style.transform = 'scaleY(' + vRange.value + ')';
   // サイズ調整
+  resultArea.style.fontSize = sizeRange.value + 'px';
   sizeRange.addEventListener('change', () => {
     resultArea.style.fontSize = sizeRange.value + 'px';
   })
-  resultArea.style.fontSize = sizeRange.value + 'px';
 }
 
 // フルスクリーン
